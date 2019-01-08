@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.14.4
-Release  : 8
-URL      : https://download.kde.org/stable/plasma/5.14.4/plasma-browser-integration-5.14.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.14.4/plasma-browser-integration-5.14.4.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.14.4/plasma-browser-integration-5.14.4.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 5.14.5
+Release  : 9
+URL      : https://download.kde.org/stable/plasma/5.14.5/plasma-browser-integration-5.14.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.14.5/plasma-browser-integration-5.14.5.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.14.5/plasma-browser-integration-5.14.5.tar.xz.sig
+Summary  : Components necessary to integrate browsers into the Plasma Desktop
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: plasma-browser-integration-bin = %{version}-%{release}
@@ -73,22 +73,22 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.14.4
+%setup -q -n plasma-browser-integration-5.14.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543395510
+export SOURCE_DATE_EPOCH=1546967941
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1543395510
+export SOURCE_DATE_EPOCH=1546967941
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
 cp COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/COPYING-GPL3
