@@ -6,7 +6,7 @@
 #
 Name     : plasma-browser-integration
 Version  : 5.15.4
-Release  : 14
+Release  : 15
 URL      : https://download.kde.org/stable/plasma/5.15.4/plasma-browser-integration-5.15.4.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.15.4/plasma-browser-integration-5.15.4.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.15.4/plasma-browser-integration-5.15.4.tar.xz.sig
@@ -21,7 +21,11 @@ Requires: plasma-browser-integration-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : kactivities-dev
+BuildRequires : kdbusaddons-dev
+BuildRequires : knotifications-dev
+BuildRequires : kpackage-dev
 BuildRequires : krunner-dev
+BuildRequires : kwindowsystem-dev
 BuildRequires : plasma-framework-dev
 
 %description
@@ -80,7 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554222229
+export SOURCE_DATE_EPOCH=1555348426
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -88,7 +92,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1554222229
+export SOURCE_DATE_EPOCH=1555348426
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
 cp COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/COPYING-GPL3
