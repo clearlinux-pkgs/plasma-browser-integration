@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.15.4
-Release  : 16
-URL      : https://download.kde.org/stable/plasma/5.15.4/plasma-browser-integration-5.15.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.15.4/plasma-browser-integration-5.15.4.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.15.4/plasma-browser-integration-5.15.4.tar.xz.sig
+Version  : 5.15.5
+Release  : 17
+URL      : https://download.kde.org/stable/plasma/5.15.5/plasma-browser-integration-5.15.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.15.5/plasma-browser-integration-5.15.5.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.15.5/plasma-browser-integration-5.15.5.tar.xz.sig
 Summary  : Components necessary to integrate browsers into the Plasma Desktop
 Group    : Development/Tools
 License  : GPL-3.0
@@ -21,11 +21,7 @@ Requires: plasma-browser-integration-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : kactivities-dev
-BuildRequires : kdbusaddons-dev
-BuildRequires : knotifications-dev
-BuildRequires : kpackage-dev
 BuildRequires : krunner-dev
-BuildRequires : kwindowsystem-dev
 BuildRequires : plasma-framework-dev
 
 %description
@@ -77,14 +73,14 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.15.4
+%setup -q -n plasma-browser-integration-5.15.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557045110
+export SOURCE_DATE_EPOCH=1557245275
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -99,7 +95,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557045110
+export SOURCE_DATE_EPOCH=1557245275
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
 cp COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/COPYING-GPL3
