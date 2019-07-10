@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.16.2
-Release  : 20
-URL      : https://download.kde.org/stable/plasma/5.16.2/plasma-browser-integration-5.16.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.2/plasma-browser-integration-5.16.2.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.16.2/plasma-browser-integration-5.16.2.tar.xz.sig
+Version  : 5.16.3
+Release  : 21
+URL      : https://download.kde.org/stable/plasma/5.16.3/plasma-browser-integration-5.16.3.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.16.3/plasma-browser-integration-5.16.3.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.16.3/plasma-browser-integration-5.16.3.tar.xz.sig
 Summary  : Components necessary to integrate browsers into the Plasma Desktop
 Group    : Development/Tools
 License  : GPL-3.0
@@ -73,14 +73,14 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.16.2
+%setup -q -n plasma-browser-integration-5.16.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1561480437
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562734784
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -92,11 +92,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1561480437
+export SOURCE_DATE_EPOCH=1562734784
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
 cp COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/COPYING-GPL3
