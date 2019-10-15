@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.16.5
-Release  : 24
-URL      : https://download.kde.org/stable/plasma/5.16.5/plasma-browser-integration-5.16.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.5/plasma-browser-integration-5.16.5.tar.xz
-Source1 : https://download.kde.org/stable/plasma/5.16.5/plasma-browser-integration-5.16.5.tar.xz.sig
+Version  : 5.17.0
+Release  : 25
+URL      : https://download.kde.org/stable/plasma/5.17.0/plasma-browser-integration-5.17.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.17.0/plasma-browser-integration-5.17.0.tar.xz
+Source1 : https://download.kde.org/stable/plasma/5.17.0/plasma-browser-integration-5.17.0.tar.xz.sig
 Summary  : Components necessary to integrate browsers into the Plasma Desktop
 Group    : Development/Tools
 License  : GPL-3.0
@@ -21,8 +21,10 @@ Requires: plasma-browser-integration-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : kactivities-dev
+BuildRequires : kfilemetadata-dev
 BuildRequires : krunner-dev
 BuildRequires : plasma-framework-dev
+BuildRequires : purpose-dev
 
 %description
 # Plasma Browser Integration
@@ -73,14 +75,14 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.16.5
+%setup -q -n plasma-browser-integration-5.17.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567649576
+export SOURCE_DATE_EPOCH=1571163844
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -93,14 +95,14 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567649576
+export SOURCE_DATE_EPOCH=1571163844
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
-cp COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/COPYING-GPL3
+cp %{_builddir}/plasma-browser-integration-5.17.0/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 pushd clr-build
 %make_install
 popd
@@ -127,7 +129,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/plasma-browser-integration/COPYING-GPL3
+/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 
 %files locales -f plasma-browser-integration-host.lang -f plasma-browser-integration-reminder.lang -f plasma_runner_browsertabs.lang
 %defattr(-,root,root,-)
