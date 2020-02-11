@@ -1,11 +1,6 @@
-5.17.5
+5.18.0
 kactivities-dev
-kdbusaddons-dev
 kfilemetadata-dev
-knotifications-dev
-kpackage-dev
 krunner-dev
-kwindowsystem-dev
 plasma-framework-dev
 purpose-dev
-util-linux
