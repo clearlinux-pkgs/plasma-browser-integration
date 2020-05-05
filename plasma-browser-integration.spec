@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.18.4.1
-Release  : 35
-URL      : https://download.kde.org/stable/plasma/5.18.4/plasma-browser-integration-5.18.4.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.18.4/plasma-browser-integration-5.18.4.1.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.18.4/plasma-browser-integration-5.18.4.1.tar.xz.sig
-Summary  : Components necessary to integrate browsers into the Plasma Desktop
+Version  : 5.18.5
+Release  : 36
+URL      : https://download.kde.org/stable/plasma/5.18.5/plasma-browser-integration-5.18.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.18.5/plasma-browser-integration-5.18.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.18.5/plasma-browser-integration-5.18.5.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: plasma-browser-integration-bin = %{version}-%{release}
@@ -20,8 +20,10 @@ Requires: plasma-browser-integration-license = %{version}-%{release}
 Requires: plasma-browser-integration-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules-data
 BuildRequires : kactivities-dev
 BuildRequires : kfilemetadata-dev
+BuildRequires : ki18n-dev
 BuildRequires : krunner-dev
 BuildRequires : plasma-framework-dev
 BuildRequires : purpose-dev
@@ -75,35 +77,34 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.18.4.1
-cd %{_builddir}/plasma-browser-integration-5.18.4.1
+%setup -q -n plasma-browser-integration-5.18.5
+cd %{_builddir}/plasma-browser-integration-5.18.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1585687321
+export SOURCE_DATE_EPOCH=1588704664
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1585687321
+export SOURCE_DATE_EPOCH=1588704664
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
-cp %{_builddir}/plasma-browser-integration-5.18.4.1/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/plasma-browser-integration-5.18.5/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 pushd clr-build
 %make_install
 popd
