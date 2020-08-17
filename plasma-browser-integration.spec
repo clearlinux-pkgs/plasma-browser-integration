@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.19.2
-Release  : 39
-URL      : https://download.kde.org/stable/plasma/5.19.2/plasma-browser-integration-5.19.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.19.2/plasma-browser-integration-5.19.2.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.19.2/plasma-browser-integration-5.19.2.tar.xz.sig
+Version  : 5.19.4
+Release  : 40
+URL      : https://download.kde.org/stable/plasma/5.19.4/plasma-browser-integration-5.19.4.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.19.4/plasma-browser-integration-5.19.4.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.19.4/plasma-browser-integration-5.19.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
@@ -77,15 +77,15 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.19.2
-cd %{_builddir}/plasma-browser-integration-5.19.2
+%setup -q -n plasma-browser-integration-5.19.4
+cd %{_builddir}/plasma-browser-integration-5.19.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592937955
+export SOURCE_DATE_EPOCH=1597642124
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -97,17 +97,18 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1592937955
+export SOURCE_DATE_EPOCH=1597642124
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
-cp %{_builddir}/plasma-browser-integration-5.19.2/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/plasma-browser-integration-5.19.4/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 pushd clr-build
 %make_install
 popd
+%find_lang plasma-browser-extension
 %find_lang plasma-browser-integration-host
 %find_lang plasma-browser-integration-reminder
 %find_lang plasma_runner_browsertabs
@@ -133,6 +134,6 @@ popd
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 
-%files locales -f plasma-browser-integration-host.lang -f plasma-browser-integration-reminder.lang -f plasma_runner_browsertabs.lang
+%files locales -f plasma-browser-extension.lang -f plasma-browser-integration-host.lang -f plasma-browser-integration-reminder.lang -f plasma_runner_browsertabs.lang
 %defattr(-,root,root,-)
 
