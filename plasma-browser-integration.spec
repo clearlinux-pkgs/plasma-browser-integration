@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.20.3
-Release  : 44
-URL      : https://download.kde.org/stable/plasma/5.20.3/plasma-browser-integration-5.20.3.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.20.3/plasma-browser-integration-5.20.3.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.20.3/plasma-browser-integration-5.20.3.tar.xz.sig
+Version  : 5.20.4
+Release  : 45
+URL      : https://download.kde.org/stable/plasma/5.20.4/plasma-browser-integration-5.20.4.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.20.4/plasma-browser-integration-5.20.4.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.20.4/plasma-browser-integration-5.20.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
@@ -66,15 +66,15 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.20.3
-cd %{_builddir}/plasma-browser-integration-5.20.3
+%setup -q -n plasma-browser-integration-5.20.4
+cd %{_builddir}/plasma-browser-integration-5.20.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1605058010
+export SOURCE_DATE_EPOCH=1606842825
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -90,10 +90,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1605058010
+export SOURCE_DATE_EPOCH=1606842825
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
-cp %{_builddir}/plasma-browser-integration-5.20.3/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/plasma-browser-integration-5.20.4/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 pushd clr-build
 %make_install
 popd
