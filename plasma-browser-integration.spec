@@ -5,15 +5,16 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.20.5
-Release  : 46
-URL      : https://download.kde.org/stable/plasma/5.20.5/plasma-browser-integration-5.20.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.20.5/plasma-browser-integration-5.20.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.20.5/plasma-browser-integration-5.20.5.tar.xz.sig
+Version  : 5.21.4
+Release  : 47
+URL      : https://download.kde.org/stable/plasma/5.21.4/plasma-browser-integration-5.21.4.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.21.4/plasma-browser-integration-5.21.4.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.21.4/plasma-browser-integration-5.21.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: plasma-browser-integration-bin = %{version}-%{release}
+Requires: plasma-browser-integration-data = %{version}-%{release}
 Requires: plasma-browser-integration-lib = %{version}-%{release}
 Requires: plasma-browser-integration-license = %{version}-%{release}
 Requires: plasma-browser-integration-locales = %{version}-%{release}
@@ -25,6 +26,7 @@ BuildRequires : kfilemetadata-dev
 BuildRequires : ki18n-dev
 BuildRequires : krunner-dev
 BuildRequires : plasma-framework-dev
+BuildRequires : plasma-workspace-dev
 BuildRequires : purpose-dev
 
 %description
@@ -34,15 +36,25 @@ This project aims to provide better integration of web browsers with the KDE Pla
 %package bin
 Summary: bin components for the plasma-browser-integration package.
 Group: Binaries
+Requires: plasma-browser-integration-data = %{version}-%{release}
 Requires: plasma-browser-integration-license = %{version}-%{release}
 
 %description bin
 bin components for the plasma-browser-integration package.
 
 
+%package data
+Summary: data components for the plasma-browser-integration package.
+Group: Data
+
+%description data
+data components for the plasma-browser-integration package.
+
+
 %package lib
 Summary: lib components for the plasma-browser-integration package.
 Group: Libraries
+Requires: plasma-browser-integration-data = %{version}-%{release}
 Requires: plasma-browser-integration-license = %{version}-%{release}
 
 %description lib
@@ -66,15 +78,15 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.20.5
-cd %{_builddir}/plasma-browser-integration-5.20.5
+%setup -q -n plasma-browser-integration-5.21.4
+cd %{_builddir}/plasma-browser-integration-5.21.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1609874098
+export SOURCE_DATE_EPOCH=1618701175
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -90,10 +102,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1609874098
+export SOURCE_DATE_EPOCH=1618701175
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
-cp %{_builddir}/plasma-browser-integration-5.20.5/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/plasma-browser-integration-5.21.4/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 pushd clr-build
 %make_install
 popd
@@ -110,10 +122,14 @@ popd
 %defattr(-,root,root,-)
 /usr/bin/plasma-browser-integration-host
 
+%files data
+%defattr(-,root,root,-)
+/usr/share/krunner/dbusplugins/plasma-runner-browserhistory.desktop
+/usr/share/krunner/dbusplugins/plasma-runner-browsertabs.desktop
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/qt5/plugins/kf5/kded/browserintegrationreminder.so
-/usr/lib64/qt5/plugins/kf5/krunner/krunner_browsertabs.so
 
 %files license
 %defattr(0644,root,root,0755)
