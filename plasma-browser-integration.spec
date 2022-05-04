@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.24.4
-Release  : 61
-URL      : https://download.kde.org/stable/plasma/5.24.4/plasma-browser-integration-5.24.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.24.4/plasma-browser-integration-5.24.4.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.24.4/plasma-browser-integration-5.24.4.tar.xz.sig
+Version  : 5.24.5
+Release  : 62
+URL      : https://download.kde.org/stable/plasma/5.24.5/plasma-browser-integration-5.24.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.24.5/plasma-browser-integration-5.24.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.24.5/plasma-browser-integration-5.24.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 GPL-3.0 MIT
@@ -77,15 +77,15 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.24.4
-cd %{_builddir}/plasma-browser-integration-5.24.4
+%setup -q -n plasma-browser-integration-5.24.5
+cd %{_builddir}/plasma-browser-integration-5.24.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1648662756
+export SOURCE_DATE_EPOCH=1651625571
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -101,13 +101,13 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1648662756
+export SOURCE_DATE_EPOCH=1651625571
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
-cp %{_builddir}/plasma-browser-integration-5.24.4/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
-cp %{_builddir}/plasma-browser-integration-5.24.4/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-browser-integration/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/plasma-browser-integration-5.24.4/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-browser-integration/2123756e0b1fc8243547235a33c0fcabfe3b9a51
-cp %{_builddir}/plasma-browser-integration-5.24.4/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/plasma-browser-integration/81e12d0c07782abcf558af7aa19846e3e2606a70
+cp %{_builddir}/plasma-browser-integration-5.24.5/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/plasma-browser-integration-5.24.5/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-browser-integration/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/plasma-browser-integration-5.24.5/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-browser-integration/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+cp %{_builddir}/plasma-browser-integration-5.24.5/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/plasma-browser-integration/81e12d0c07782abcf558af7aa19846e3e2606a70
 pushd clr-build
 %make_install
 popd
