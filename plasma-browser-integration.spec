@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.25.5
-Release  : 68
-URL      : https://download.kde.org/stable/plasma/5.25.5/plasma-browser-integration-5.25.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.25.5/plasma-browser-integration-5.25.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.25.5/plasma-browser-integration-5.25.5.tar.xz.sig
+Version  : 5.26.0
+Release  : 69
+URL      : https://download.kde.org/stable/plasma/5.26.0/plasma-browser-integration-5.26.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.26.0/plasma-browser-integration-5.26.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.26.0/plasma-browser-integration-5.26.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 GPL-3.0 MIT
+License  : CC0-1.0 GPL-2.0 GPL-3.0 MIT
 Requires: plasma-browser-integration-bin = %{version}-%{release}
 Requires: plasma-browser-integration-data = %{version}-%{release}
 Requires: plasma-browser-integration-lib = %{version}-%{release}
@@ -23,7 +23,6 @@ BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
 BuildRequires : kactivities-dev
 BuildRequires : kfilemetadata-dev
-BuildRequires : ki18n-dev
 BuildRequires : krunner-dev
 BuildRequires : plasma-workspace-dev
 BuildRequires : purpose-dev
@@ -77,15 +76,15 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.25.5
-cd %{_builddir}/plasma-browser-integration-5.25.5
+%setup -q -n plasma-browser-integration-5.26.0
+cd %{_builddir}/plasma-browser-integration-5.26.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662508261
+export SOURCE_DATE_EPOCH=1665768568
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -101,10 +100,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1662508261
+export SOURCE_DATE_EPOCH=1665768568
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
 cp %{_builddir}/plasma-browser-integration-%{version}/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02 || :
+cp %{_builddir}/plasma-browser-integration-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-browser-integration/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
 cp %{_builddir}/plasma-browser-integration-%{version}/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-browser-integration/3e8971c6c5f16674958913a94a36b1ea7a00ac46 || :
 cp %{_builddir}/plasma-browser-integration-%{version}/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-browser-integration/2123756e0b1fc8243547235a33c0fcabfe3b9a51 || :
 cp %{_builddir}/plasma-browser-integration-%{version}/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/plasma-browser-integration/81e12d0c07782abcf558af7aa19846e3e2606a70 || :
@@ -138,6 +138,7 @@ popd
 /usr/share/package-licenses/plasma-browser-integration/2123756e0b1fc8243547235a33c0fcabfe3b9a51
 /usr/share/package-licenses/plasma-browser-integration/3e8971c6c5f16674958913a94a36b1ea7a00ac46
 /usr/share/package-licenses/plasma-browser-integration/81e12d0c07782abcf558af7aa19846e3e2606a70
+/usr/share/package-licenses/plasma-browser-integration/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
 /usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 
 %files locales -f plasma-browser-extension.lang -f plasma-browser-integration-host.lang -f plasma-browser-integration-reminder.lang
