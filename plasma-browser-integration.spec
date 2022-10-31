@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.26.1
-Release  : 70
-URL      : https://download.kde.org/stable/plasma/5.26.1/plasma-browser-integration-5.26.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.26.1/plasma-browser-integration-5.26.1.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.26.1/plasma-browser-integration-5.26.1.tar.xz.sig
+Version  : 5.26.2
+Release  : 71
+URL      : https://download.kde.org/stable/plasma/5.26.2/plasma-browser-integration-5.26.2.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.26.2/plasma-browser-integration-5.26.2.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.26.2/plasma-browser-integration-5.26.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 GPL-2.0 GPL-3.0 MIT
@@ -76,15 +76,15 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.26.1
-cd %{_builddir}/plasma-browser-integration-5.26.1
+%setup -q -n plasma-browser-integration-5.26.2
+cd %{_builddir}/plasma-browser-integration-5.26.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1666288476
+export SOURCE_DATE_EPOCH=1667247211
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -100,7 +100,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1666288476
+export SOURCE_DATE_EPOCH=1667247211
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
 cp %{_builddir}/plasma-browser-integration-%{version}/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02 || :
@@ -111,7 +111,7 @@ cp %{_builddir}/plasma-browser-integration-%{version}/LICENSES/MIT.txt %{buildro
 pushd clr-build
 %make_install
 popd
-%find_lang plasma-browser-extension
+%find_lang plasma-browser-extension._static_
 %find_lang plasma-browser-integration-host
 %find_lang plasma-browser-integration-reminder
 
@@ -141,6 +141,6 @@ popd
 /usr/share/package-licenses/plasma-browser-integration/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
 /usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 
-%files locales -f plasma-browser-extension.lang -f plasma-browser-integration-host.lang -f plasma-browser-integration-reminder.lang
+%files locales -f plasma-browser-extension._static_.lang -f plasma-browser-integration-host.lang -f plasma-browser-integration-reminder.lang
 %defattr(-,root,root,-)
 
