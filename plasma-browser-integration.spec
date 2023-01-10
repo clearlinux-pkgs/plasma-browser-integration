@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.26.4
-Release  : 73
-URL      : https://download.kde.org/stable/plasma/5.26.4/plasma-browser-integration-5.26.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.26.4/plasma-browser-integration-5.26.4.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.26.4/plasma-browser-integration-5.26.4.tar.xz.sig
+Version  : 5.26.5
+Release  : 74
+URL      : https://download.kde.org/stable/plasma/5.26.5/plasma-browser-integration-5.26.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.26.5/plasma-browser-integration-5.26.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.26.5/plasma-browser-integration-5.26.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 GPL-2.0 GPL-3.0 MIT
@@ -26,6 +26,9 @@ BuildRequires : kfilemetadata-dev
 BuildRequires : krunner-dev
 BuildRequires : plasma-workspace-dev
 BuildRequires : purpose-dev
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 # Plasma Browser Integration
@@ -76,31 +79,31 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.26.4
-cd %{_builddir}/plasma-browser-integration-5.26.4
+%setup -q -n plasma-browser-integration-5.26.5
+cd %{_builddir}/plasma-browser-integration-5.26.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1669823593
+export SOURCE_DATE_EPOCH=1673314021
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1669823593
+export SOURCE_DATE_EPOCH=1673314021
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
 cp %{_builddir}/plasma-browser-integration-%{version}/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02 || :
