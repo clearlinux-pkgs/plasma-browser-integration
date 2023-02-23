@@ -1,7 +1,5 @@
-5.27.0
+5.27.1
 kactivities-dev
 kfilemetadata-dev
-kio-dev
 krunner-dev
-pkgconfig(x11)
 purpose-dev
