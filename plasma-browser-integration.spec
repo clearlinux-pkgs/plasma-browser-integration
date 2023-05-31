@@ -7,7 +7,7 @@
 #
 Name     : plasma-browser-integration
 Version  : 5.27.5
-Release  : 81
+Release  : 82
 URL      : https://download.kde.org/stable/plasma/5.27.5/plasma-browser-integration-5.27.5.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.27.5/plasma-browser-integration-5.27.5.tar.xz
 Source1  : https://download.kde.org/stable/plasma/5.27.5/plasma-browser-integration-5.27.5.tar.xz.sig
@@ -89,7 +89,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684883591
+export SOURCE_DATE_EPOCH=1685569982
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -122,7 +122,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684883591
+export SOURCE_DATE_EPOCH=1685569982
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
 cp %{_builddir}/plasma-browser-integration-%{version}/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02 || :
