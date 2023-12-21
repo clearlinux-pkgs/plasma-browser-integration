@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-browser-integration
-Version  : 5.27.9
-Release  : 87
-URL      : https://download.kde.org/stable/plasma/5.27.9/plasma-browser-integration-5.27.9.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.27.9/plasma-browser-integration-5.27.9.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.27.9/plasma-browser-integration-5.27.9.tar.xz.sig
+Version  : 5.27.10
+Release  : 88
+URL      : https://download.kde.org/stable/plasma/5.27.10/plasma-browser-integration-5.27.10.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.10/plasma-browser-integration-5.27.10.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.10/plasma-browser-integration-5.27.10.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 GPL-2.0 GPL-3.0 MIT
@@ -83,15 +83,15 @@ locales components for the plasma-browser-integration package.
 
 
 %prep
-%setup -q -n plasma-browser-integration-5.27.9
-cd %{_builddir}/plasma-browser-integration-5.27.9
+%setup -q -n plasma-browser-integration-5.27.10
+cd %{_builddir}/plasma-browser-integration-5.27.10
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1702057404
+export SOURCE_DATE_EPOCH=1703119830
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -150,7 +150,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1702057404
+export SOURCE_DATE_EPOCH=1703119830
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-browser-integration
 cp %{_builddir}/plasma-browser-integration-%{version}/COPYING-GPL3 %{buildroot}/usr/share/package-licenses/plasma-browser-integration/8624bcdae55baeef00cd11d5dfcfa60f68710a02 || :
