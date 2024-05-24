@@ -1,11 +1,11 @@
-/builddir/build/BUILDROOT/plasma-browser-integration-6.0.4-94.x86_64/etc/:
-/builddir/build/BUILDROOT/plasma-browser-integration-6.0.4-94.x86_64/etc/chromium/native-messaging-hosts:
-/builddir/build/BUILDROOT/plasma-browser-integration-6.0.4-94.x86_64/etc/chromium:
-/builddir/build/BUILDROOT/plasma-browser-integration-6.0.4-94.x86_64/etc/opt/chrome/native-messaging-hosts:
-/builddir/build/BUILDROOT/plasma-browser-integration-6.0.4-94.x86_64/etc/opt/chrome:
-/builddir/build/BUILDROOT/plasma-browser-integration-6.0.4-94.x86_64/etc/opt/edge/native-messaging-hosts:
-/builddir/build/BUILDROOT/plasma-browser-integration-6.0.4-94.x86_64/etc/opt/edge:
-/builddir/build/BUILDROOT/plasma-browser-integration-6.0.4-94.x86_64/etc/opt:
+/etc/:
+/etc/chromium/native-messaging-hosts:
+/etc/chromium:
+/etc/opt/chrome/native-messaging-hosts:
+/etc/opt/chrome:
+/etc/opt/edge/native-messaging-hosts:
+/etc/opt/edge:
+/etc/opt:
 chrome
 chromium
 edge
@@ -13,7 +13,6 @@ native-messaging-hosts
 native-messaging-hosts
 native-messaging-hosts
 opt
-opt' ']'
 org.kde.plasma.browser_integration.json
 org.kde.plasma.browser_integration.json
 org.kde.plasma.browser_integration.json
