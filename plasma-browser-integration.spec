@@ -9,7 +9,7 @@
 #
 Name     : plasma-browser-integration
 Version  : 6.0.5
-Release  : 95
+Release  : 96
 URL      : https://download.kde.org/stable/plasma/6.0.5/plasma-browser-integration-6.0.5.tar.xz
 Source0  : https://download.kde.org/stable/plasma/6.0.5/plasma-browser-integration-6.0.5.tar.xz
 Source1  : https://download.kde.org/stable/plasma/6.0.5/plasma-browser-integration-6.0.5.tar.xz.sig
