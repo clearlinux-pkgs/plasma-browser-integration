@@ -13,6 +13,7 @@ native-messaging-hosts
 native-messaging-hosts
 native-messaging-hosts
 opt
+opt' ']'
 org.kde.plasma.browser_integration.json
 org.kde.plasma.browser_integration.json
 org.kde.plasma.browser_integration.json
